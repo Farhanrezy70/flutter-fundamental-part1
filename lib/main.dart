@@ -35,28 +35,20 @@ class MyLayout extends StatelessWidget {
 }
 
 showAlertDialog(BuildContext context) {
-  // set up the SimpleDialog
-  SimpleDialog dialog = SimpleDialog(
-    title: const Text('Choose an option'),
-    children: <Widget>[
-      SimpleDialogOption(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        child: const Text('Option 1'),
-      ),
-      SimpleDialogOption(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        child: const Text('Option 2'),
-      ),
-      SimpleDialogOption(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        child: const Text('Option 3'),
-      ),
+  // set up the button
+  Widget okButton = TextButton(
+    child: const Text("OK"),
+    onPressed: () {
+      Navigator.pop(context);
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: const Text("My title"),
+    content: const Text("This is my message."),
+    actions: [
+      okButton,
     ],
   );
 
@@ -64,7 +56,7 @@ showAlertDialog(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return dialog;
+      return alert;
     },
   );
 }
